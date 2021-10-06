@@ -37,20 +37,6 @@ public class DemoTest {
     public void testIsTriangle5() {
         assertTrue(Demo.isTriangle(12, 13, 5));
     }
-    @Test
-	public void testIsTriangle6() {
-		assertTrue(Demo.isTriangle(0.5,1,0.5));
-	}
-	
-	@Test
-	public void testIsTriangle7() {
-		assertTrue(Demo.isTriangle(0.5,0.5,1));
-	}
-	
-	@Test
-	public void testIsTriangle8() {
-		assertTrue(Demo.isTriangle(1,0.5,0.5));
-	}
 	    
     @Test
     public void testIsNotTriangle1() {
@@ -86,10 +72,18 @@ public class DemoTest {
     public void testIsNotTriangle8() {
         assertFalse(Demo.isTriangle(1, 2, -1));
     }
+	   
+    @Test
+    public void testIsNotTriangle9() {
+        assertFalse(Demo.isTriangle(0.5, 1, 0.5));
+    }
 	
 	@Test
 	public void testMainInput1() {
-		String input = "5\\n12\\n13\\n";
+		// Multiple inputs
+		String input = "5" +System.getProperty("line.separator") 
+					 + "12" +System.getProperty("line.separator") 
+					 + "13";
 		
 		// Redirections for user input
 		ByteArrayInputStream in = new ByteArrayInputStream(input.getBytes());
@@ -98,13 +92,13 @@ public class DemoTest {
 		System.setOut(new PrintStream(out));
 		
 		// Invoke main
-		//String[] args = {};
-		//Demo.main(args);
+		String[] args = {};
+		Demo.main(args);
 		
 		String consoleOutput = "Enter side 1: " + System.getProperty("line.separator");
 		consoleOutput += "Enter side 2: " + System.getProperty("line.separator");
 		consoleOutput += "Enter side 3: " + System.getProperty("line.separator");
-		consoleOutput += "This is not a triangle." + System.getProperty("line.separator");
+		consoleOutput += "This is a triangle." + System.getProperty("line.separator");
 		
 		assertEquals(consoleOutput,out.toString());
 	}
